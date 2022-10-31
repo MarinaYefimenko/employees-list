@@ -14,9 +14,9 @@ class App extends Component {
         super(props);
         this.state = {
             data: [
-                {name: 'Maryna', salary: 1500, increase: false, rise:true, id: 1},
-                {name:"Hanna", salary: 1430, increase: true, rise:false, id: 2},
-                {name:"Dima", salary: 980, increase: false, rise:false, id: 3},
+                {name: 'John S.', salary: 1500, increase: false, rise:true, id: 1},
+                {name:"Selena G.", salary: 1430, increase: true, rise:false, id: 2},
+                {name:"Marc K.", salary: 980, increase: false, rise:false, id: 3},
             ],
             term: '',
             filter: 'all',
@@ -34,17 +34,6 @@ deleteItem = (id) => {
 }
 
 onToggleProp = (id,prop) => {
-    // this.setState(({data}) => {
-    //     const index = data.findIndex(elem => elem.id === id);
-    //     const old = data[index];
-    //     const newItem = {...old, increase: !old.increase};
-    //     const newArr = [...data.slice(0, index), newItem, ...data.slice(index+1)];
-
-    //     return {
-    //         data:newArr
-    //     }
-    // })
-
     this.setState(({data}) => ({
         data: data.map(item => {
             if(item.id === id) {
