@@ -20,12 +20,13 @@ class App extends Component {
             ],
             term: '',
             filter: 'all',
+            
         }
+        this.maxId = 4;
     }
 
 deleteItem = (id) => {
     this.setState (({data}) => {
-        // const index = data.findIndex(elem => elem.id == id);
         return {
             data: data.filter(item => item.id !== id)
         }
@@ -82,6 +83,21 @@ onFilterSelect = (filter) => {
     this.setState({filter});
 }
 
+addItem = (name, salary) => {
+    const newItem = {
+        name, 
+        salary,
+        increase: false,
+        rise: false,
+        id: this.maxId++
+    }
+    this.setState(({data}) => {
+        const newArr = [...data, newItem];
+        return {
+            data: newArr
+        }
+    });
+}
 
     render () {
         const {data, term, filter} = this.state;
@@ -103,7 +119,8 @@ onFilterSelect = (filter) => {
                     data={visibleData}
                     onDelete={this.deleteItem}
                     onToggleProp={this.onToggleProp}/>
-                <EmployeesAddForm/>
+                <EmployeesAddForm
+                    onAdd={this.addItem}/>
             </div>
         )
     }
